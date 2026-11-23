@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# 语法检查：构建全部包（黑名单与内嵌密钥处理与正式构建一致）
+set -euo pipefail
+FLAGS="$(tools/buildflags.sh)"
+CGO_ENABLED=0 go build -trimpath -ldflags "-w -s" $FLAGS ./...

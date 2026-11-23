@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# 部署：构建由 depends = ["build"] 完成，这里压缩并同步到服务器
+# （密钥已内嵌混淆，服务器无需配置文件）
+set -euo pipefail
+upx -9 AyaInOne
+rsync -ahzP --info=stats1,progress2 AyaInOne envs:

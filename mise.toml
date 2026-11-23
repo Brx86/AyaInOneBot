@@ -1,0 +1,18 @@
+[env]
+# 编译时排除的 bot 黑名单，逗号或空格分隔，构建时转成 -tags=no<名字>。
+# 可选值：b23 fwd gal gun input lex morse omo slay zssm
+# 示例：BOT_BLACKLIST = "gal,lex"
+BOT_BLACKLIST = "gal"
+
+# 任务实现在 .mise/tasks/，构建参数统一由 tools/buildflags.sh 计算
+# （黑名单 → -tags=no<名>；.env 存在 → 内嵌密钥 → -tags=secrets）。
+
+[tasks.check]
+description = "语法检查：构建全部包，黑名单与内嵌密钥处理与正式构建一致"
+
+[tasks.build]
+description = "构建：garble 混淆 + 内嵌密钥 + 黑名单排除 → AyaInOne"
+
+[tasks.deploy]
+description = "部署：构建（depends）→ upx 压缩 → rsync 到服务器 envs:"
+depends = ["build"]

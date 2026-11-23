@@ -1,0 +1,11 @@
+# 密钥与本地配置
+.env
+.commandcode
+internal/config/embedded_gen.go
+
+# 构建产物
+AyaInOne
+
+# 本地 cookie（ayab23 小红书抓取）
+my_cookie.txt
+ref/my_cookie.txt

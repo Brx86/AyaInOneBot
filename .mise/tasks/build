@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# 构建：garble 混淆 + 内嵌密钥 + 黑名单排除
+set -euo pipefail
+FLAGS="$(tools/buildflags.sh)"
+GOGARBLE=ayainonebot GOARCH=amd64 CGO_ENABLED=0 garble -literals -tiny build -v -trimpath -ldflags "-w -s" $FLAGS -o AyaInOne
